@@ -1,0 +1,40 @@
+#message{
+display:block;
+margin:1px;
+height:100px;
+padding: 5px 0px 0px 5px;
+width: 70%;
+}
+
+.delete {
+  display: inline-block;
+  padding: 2px 2px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px #999;
+}
+
+.delete:hover {background-color: #3e8e41}
+
+.delete:active {
+  background-color: #3e8e41;
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+
+
+
+/*#message_set>#message_clear:hover{
+cursor:pointer;
+}*/
+
+
+.img_face:hover{
+cursor:pointer;
+}

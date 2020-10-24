@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- <link href="/zone/static/css/navigation.css" rel="stylesheet" type="text/css"> -->
+<link href={% static 'css/navigation.css' %} rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<!-- <script src="/zone/static/js/navigation.js"></script> -->
+<script src={% static 'js/navigation.js' %}></script>
+</head>
+<body>
+
+<div class="all">
+	<div class="user">
+		<a id="username"></a>
+		<a id="log_out" href="../logout/">退出登录</a>
+	</div>
+</div>
+
+
+<div class="menu">
+	<ul>
+		<li><a href="../yzc">首页</a></li>
+		<li><a href="../message">留言板</a></li>
+		<li><a href="../journal">日志</a> </li>
+		<li><a href="../problem">疑难</a></li>
+		<li><a href="../picture">照片墙</a></li>
+		<li><a href="#">5(假的)</a></li>
+		<li><a href="../66">66</a></li>
+		<li><a href="../777">777</a></li>
+		<li><a href="#">更多(假的)</a></li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yzc</title>
+<!-- <link href="/zone/static/css/common.css" rel="stylesheet" type="text/css"> -->
+<link href={% static 'css/common.css' %} rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<!-- <script src="/zone/static/js/common.js"></script> -->
+<script src={% static 'js/common.js' %}></script>
+<!-- <script src="/zone/static/js/777.js"></script> -->
+<script src={% static 'js/777.js' %}></script>
+</head>
+<body>
+<div id="navigation"></div>
+
+<div>
+    <h3>小七</h3>
+    <p>
+    <button id = "b1" onclick = "ChangePicture()" >换一张图片</button>
+    </p>
+</div>
+
+
+
+<img id = "p1" src = "/static/pictures/picture_777/picture1.jpg">
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="/zone/static/css/common.css" rel="stylesheet" type="text/css"> -->
+    <link href={% static 'css/common.css' %} rel="stylesheet" type="text/css">
+    <!-- <link href="/zone/static/css/login.css" rel="stylesheet" type="text/css"> -->
+    <link href={% static 'css/login.css' %} rel="stylesheet" type="text/css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js" ></script>
+<!--    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css">-->
+<!--    <script src="../static/js/bootstrap.js"></script>-->
+    <!-- <script src="/zone/static/js/login.js"></script>-->
+    <script src={% static 'js/login.js' %}></script>
+    <title>登录</title>
+</head>
+<body>
+<div class="jumbotron">
+  <div class="container" align="center">
+        <h2 class="text-info" style="font-family:宋体;font-weight:bold;font-size:40px;margin:5px;">登录</h2>
+<!--        <div class="text-muted" style="margin:5px;">请登录后使用</div>-->
+        用户:<input id="login_user" type="text" name="user" style="margin:5px;display:inline;"><br>
+        密码:<input id="login_pwd" type="password" name="pwd" style="margin:5px;display:inline;"><br>
+        <button id="login_btn" class="btn btn-success">登录</button>
+        <button id="register_visibility" class="btn btn-success">注册</button>
+  </div>
+</div>
+
+<div id="register_div" class="jumbotron" style="display:none;">
+  <div class="container" align="center">
+        <h2 class="text-info" style="font-family:宋体;font-weight:bold;font-size:40px;margin:5px;">注册</h2>
+        用户:<input id="register_user" type="text" name="user" style="margin:5px;display:inline;" autocomplete="off"><br>
+        密码:<input id="register_pwd" type="password" name="pwd" style="margin:5px;display:inline;"><br>
+<!--        邮箱:<input id="register_email" type="text" name="email" style="margin:5px;display:inline;" autocomplete="off"><br>-->
+        <button id="register_btn" class="btn btn-success">注册</button>
+  </div>
+</div>
+
+</body>
+
+</html>
+
+</body>
+</html>

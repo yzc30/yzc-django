@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yzc</title>
+<!-- <link href="/zone/static/css/common.css" rel="stylesheet" type="text/css"> -->
+<link href={% static 'css/common.css' %} rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<!-- <script src="/zone/static/js/common.js"></script> -->
+<script src={% static 'js/common.js' %}></script>
+<!-- <script src="/zone/static/js/66.js"></script> -->
+<script src={% static 'js/66.js' %}></script>
+</head>
+<body>
+<div id="navigation"></div>
+
+<div>
+  <h3>LRY</h3>
+</div>
+
+<div>
+  <a id="guandeng" href="javascript:void(0);" style="display:block;">关灯 ▼</a>
+  <video id="guandeng_v" style="display:none;" width="640" height="360" controls>
+    <source src="/static/video/liurenyu2.mp4" type="video/mp4">您的浏览器不支持 video 标签。
+  </video>
+</div>
+
+<br>
+
+<div>
+  <a id="YAB" href="javascript:void(0);" style="display:block;">You Are Beautiful ▼</a>
+  <video id="YAB_v" style="display:none;"  controls>
+    <source src="/static/video/liurenyu1.mp4" type="video/mp4">您的浏览器不支持 video 标签。
+  </video>
+</div>
+
+</body>
+</html>

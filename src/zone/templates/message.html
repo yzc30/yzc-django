@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yzc</title>
+<!-- <link href="/zone/static/css/message.css" rel="stylesheet" type="text/css"> -->
+<link href="{% static 'css/message.css' %}" rel="stylesheet" type="text/css">
+<!-- <link href="/zone/static/css/common.css" rel="stylesheet" type="text/css"> -->
+<link href={% static 'css/common.css' %} rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<!-- <script src="/zone/static/js/common.js"></script> -->
+<script src="{% static 'js/common.js' %}"></script>
+<!-- <script src="/zone/static/js/message.js"></script> -->
+<script src={% static 'js/message.js' %}></script>
+</head>
+
+
+
+<body>
+
+<div id="navigation"></div>
+
+
+<div>
+<h3>寄语</h3>
+</div>
+
+<div>
+    <div style="margin:0px 0px 20px 0px;">
+        <p>留言</p>
+         <div id="message_set">
+             <a>留言板设置▼</a>
+             <div>
+               <a id="message_clear" href="javascript:void(0);" style="visibility:visible">清空留言板内容</a>
+             </div>
+         </div>
+         <div id = "message_clear_div" style="display:none">请输入清空密码:
+               <input id="message_clear_password" type="password">
+               <button id="message_clear_submit">提交</button>
+         </div>
+    </div>
+
+    <div>
+    <button id="face">表情</button>
+    <textarea id="message" placeholder="请输入留言内容.."></textarea>
+    <button id="message_send" class="btn btn-primary">发表留言</button>
+    </div>
+
+    <div id="face_div" style="display:none;position:absolute;">
+        <div style="height: 250px;">
+            <table cellpadding="1" cellspacing="1" style="border-collapse:collapse;" border="1" bordercolor="#e3e3e3">
+                <tbody>
+                    <tr>
+                        <td border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);" align="center" bgcolor="#FFFFFF" title="呵呵">
+                            <img class="img_face" src="{% static 'img/tieba_face/hehe.png' %}" alt="呵呵" >
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="haha" >
+                            <img class="img_face" src={% static 'img/tieba_face/haha.png' %} alt="haha">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="吐舌" >
+                            <img class="img_face" src={% static 'img/tieba_face/tushe.png' %} alt="吐舌">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="啊" >
+                            <img class="img_face" src={% static 'img/tieba_face/a.png' %} alt="啊">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="酷" >
+                            <img class="img_face" src={% static 'img/tieba_face/ku.png' %} alt="酷">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="怒" >
+                            <img class="img_face" src={% static 'img/tieba_face/nu.png' %} alt="怒">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="开心" >
+                            <img class="img_face" src={% static 'img/tieba_face/kaixin.png' %} alt="开心">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="汗" >
+                            <img class="img_face" src={% static 'img/tieba_face/han.png' %} alt="汗">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="泪" >
+                            <img class="img_face" src={% static 'img/tieba_face/lei.png' %} alt="泪">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="黑线" >
+                            <img class="img_face" src={% static 'img/tieba_face/heixian.png' %} alt="黑线">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="鄙视" >
+                            <img class="img_face" src={% static 'img/tieba_face/bishi.png' %} alt="鄙视">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="不高兴" >
+                            <img class="img_face" src={% static 'img/tieba_face/bugaoxing.png' %} alt="不高兴">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="真棒" >
+                            <img class="img_face" src={% static 'img/tieba_face/zhenbang.png' %} alt="真棒">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="钱" >
+                            <img class="img_face" src={% static 'img/tieba_face/qian.png' %} alt="钱">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="疑问" >
+                            <img class="img_face" src={% static 'img/tieba_face/yiwen.png' %} alt="疑问">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="阴险" >
+                            <img class="img_face" src={% static 'img/tieba_face/yinxian.png' %} alt="阴险">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="吐" >
+                            <img class="img_face" src={% static 'img/tieba_face/tu.png' %} alt="吐">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="咦" >
+                            <img class="img_face" src={% static 'img/tieba_face/yi.png' %} alt="咦">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="委屈" >
+                            <img class="img_face" src={% static 'img/tieba_face/weiqu.png' %} alt="委屈">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="花心" >
+                            <img class="img_face" src={% static 'img/tieba_face/huaxin.png' %} alt="花心">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="呼" >
+                            <img class="img_face" src={% static 'img/tieba_face/hu.png' %} alt="呼">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="笑眼" >
+                            <img class="img_face" src={% static 'img/tieba_face/xiaoyan.png' %} alt="笑眼">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="冷" >
+                            <img class="img_face" src={% static 'img/tieba_face/leng.png' %} alt="冷">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="太开心" >
+                            <img class="img_face" src={% static 'img/tieba_face/taikaixin.png' %} alt="太开心">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="滑稽" >
+                            <img class="img_face" src={% static 'img/tieba_face/huaji.png' %} alt="滑稽">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="勉强" >
+                            <img class="img_face" src={% static 'img/tieba_face/mianqiang.png' %} alt="勉强">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="狂汗" >
+                            <img class="img_face" src={% static 'img/tieba_face/kuanghan.png' %} alt="狂汗">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="乖" >
+                            <img class="img_face" src={% static 'img/tieba_face/guai.png' %} alt="乖">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="睡觉" >
+                            <img class="img_face" src={% static 'img/tieba_face/shuijiao.png' %} alt="睡觉">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="惊哭" >
+                            <img class="img_face" src={% static 'img/tieba_face/jingku.png' %} alt="惊哭">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="生气" >
+                            <img class="img_face" src={% static 'img/tieba_face/shengqi.png' %} alt="生气">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="惊讶" >
+                            <img class="img_face" src={% static 'img/tieba_face/jingya.png' %} alt="惊讶">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="喷" >
+                            <img class="img_face" src={% static 'img/tieba_face/pen.png' %} alt="喷">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="爱心" >
+                            <img class="img_face" src={% static 'img/tieba_face/aixin.png' %} alt="爱心">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="心碎" >
+                            <img class="img_face" src={% static 'img/tieba_face/xinsui.png' %} alt="心碎">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse: collapse; background-color: rgb(255, 255, 255);"  align="center" bgcolor="#FFFFFF" title="玫瑰" >
+                            <img class="img_face" src={% static 'img/tieba_face/meigui.png' %} alt="玫瑰">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="礼物" >
+                            <img class="img_face" src={% static 'img/tieba_face/liwu.png' %} alt="礼物">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="彩虹" >
+                            <img class="img_face" src={% static 'img/tieba_face/caihong.png' %} alt="彩虹">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="星星月亮" >
+                            <img class="img_face" src={% static 'img/tieba_face/xingxingyueliang.png' %} alt="星星月亮">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="太阳" >
+                            <img class="img_face" src={% static 'img/tieba_face/taiyang.png' %} alt="太阳">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="钱币" >
+                            <img class="img_face" src={% static 'img/tieba_face/qianbi.png' %} alt="钱币">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="灯泡" >
+                            <img class="img_face" src={% static 'img/tieba_face/dengpao.png' %} alt="灯泡">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="茶杯" >
+                            <img class="img_face" src={% static 'img/tieba_face/chabei.png' %} alt="茶杯">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="蛋糕" >
+                            <img class="img_face" src={% static 'img/tieba_face/dangao.png' %} alt="蛋糕">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="音乐" >
+                            <img class="img_face" src={% static 'img/tieba_face/yinyue.png' %} alt="音乐">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="爱你" >
+                            <img class="img_face" src={% static 'img/tieba_face/aini.png' %} alt="爱你">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="胜利" >
+                            <img class="img_face" src={% static 'img/tieba_face/shengli.png' %} alt="胜利">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="大拇指" >
+                            <img class="img_face" src={% static 'img/tieba_face/damuzhi.png' %} alt="大拇指">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="弱" >
+                            <img class="img_face" src={% static 'img/tieba_face/ruo.png' %} alt="弱">
+                        </td>
+                        <td class="s_face j_emotion" border="1" width="44" height="44" style="border-collapse:collapse;"  align="center" bgcolor="#FFFFFF" title="OK" >
+                            <img class="img_face" src={% static 'img/tieba_face/ok.png' %} alt="ok">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p>这是留言板内容</p>
+    <div id="message_content">
+    </div>
+
+<!--<ul class="pagination">-->
+<!--	<li><a href="#">&laquo;</a></li>-->
+<!--	<li class="active"><a href="#">1</a></li>-->
+<!--	<li class="disabled"><a href="#">2</a></li>-->
+<!--	<li><a href="#">3</a></li>-->
+<!--	<li><a href="#">4</a></li>-->
+<!--	<li><a href="#">5</a></li>-->
+<!--	<li><a href="#">&raquo;</a></li>-->
+<!--</ul>-->
+</div>
+</body>
+</html>

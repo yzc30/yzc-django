@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<script>
+var visit_times= {{visit_times|safe}};
+var sign = {{sign|safe}};
+</script>
+<head>
+<meta charset="utf-8">
+<title>Yzc</title>
+<!-- <link href="/zone/static/css/common.css" rel="stylesheet" type="text/css"> -->
+<link href={% static 'css/common.css' %} rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js" ></script>
+<!-- <script src="/zone/static/js/common.js"></script> -->
+<script src={% static 'js/common.js' %}></script>
+<!-- <script src="/zone/static/js/yzc.js"></script> -->
+<script src={% static 'js/yzc.js' %}></script>
+
+</head>
+
+<body>
+<div id="navigation"></div>
+
+
+<div>
+    <p id="nowTime">当前时间:</p>
+    <p>你好鸭！</p>
+    <p>很高兴认识你！</p>
+</div>
+
+<div style="margin:50px 0px 0px 0px;">
+    <button id="sign">签到</button>
+</div>
+
+<div style="margin:50px 0px 0px 0px;">
+    <button id="register_apply" >注册申请列表</button>
+</div>
+
+</body>
+</html>
+
