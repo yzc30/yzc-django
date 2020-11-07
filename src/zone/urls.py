@@ -6,6 +6,7 @@ from django.conf.urls.static import static ##新增2
 
 urlpatterns = [
     path('', views.index, name='index'),
+    url(r'^auth/', views.auth),
     url(r'^login/', views.login),  # 配置当访问index/时去调用views下的index方法
     url(r'^login_user/', views.login_user),
     url(r'^logout/', views.log_out),
