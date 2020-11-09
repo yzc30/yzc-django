@@ -1,3 +1,5 @@
+from django.core import validators
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.db import models
 
 # Create your models here.
@@ -30,6 +32,22 @@ class Login(models.Model):
 class RegisterList(models.Model):
     register_user = models.CharField(max_length=20)
     register_pwd = models.CharField(max_length=20)
+
+    def clean(self):
+        if self.register_user == "":
+            raise ValidationError({'msg': '用户名不能为空'})
+        elif len(self.register_user) > 20:
+            raise ValidationError({'msg': '用户名不能超过20个字符'})
+        elif self.register_pwd == "":
+            raise ValidationError({'msg': '密码不能为空'})
+        elif len(self.register_pwd) > 20:
+            raise ValidationError({'msg': '密码不能超过20个字符'})
+        elif Login.objects.filter(user=self.register_user).exists():
+            raise ValidationError({'msg': '用户名已存在'})
+        # elif RegisterList.objects.filter(register_user=self.register_user).exists():
+        #     raise ValidationError({'msg': '用户名已登记'})
+
+
 
 
 class VisitInformation(models.Model):

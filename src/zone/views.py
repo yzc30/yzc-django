@@ -9,7 +9,7 @@ from django.views.decorators.http import require_http_methods
 from collections import  OrderedDict
 from . import models
 import pprint
-
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 # Create your views here.
 from django.http import HttpResponse, response
 
@@ -71,25 +71,18 @@ def register_user(request):
         # register_email = request.POST.get("email")
         print("register_user", register_user)
         print("register_pwd", register_pwd)
-        if register_user == "":
-            msg = "用户名不能为空"
-            return HttpResponse(json.dumps({"commit": 0, "msg": msg}))  # 不需要刷新
-        if register_pwd == "":
-            msg = "密码不能为空"
-            return HttpResponse(json.dumps({"commit": 0, "msg": msg}))  # 不需要刷新
         # print("register_email", register_email)
         login_models = models.Login.objects
-        register_list_models = models.RegisterList.objects
-        for table in login_models.all():  # 遍历数据库的table
-            # print(table.user)
-            if register_user == table.user:
-                msg = "用户名已存在"
-                return HttpResponse(json.dumps({"commit": 0, "msg": msg}))  # 不需要刷新
-        # 用户名不存在,写入注册列表
-        register_list_models.create(
-            register_user=register_user,
-            register_pwd=register_pwd
-        )
+        register_list_models = models.RegisterList(register_user=register_user, register_pwd=register_pwd)
+        # full_clean 会进入models 判断数据是否符合预期
+        try:
+            register_list_models.full_clean()
+        except ValidationError as e: # 抛出该错误的处理方式
+            # print(e.message_dict)
+            msg = e.message_dict['msg'][0]
+            # print(msg)
+            return HttpResponse(json.dumps({"commit": 0, "msg": msg}))  # 不需要刷新
+        register_list_models.save()  # 写入注册列表
         msg = "注册申请已提交,请联系管理员"
         return HttpResponse(json.dumps({"commit": 1, "msg": msg}))  # 不需要刷新
 
