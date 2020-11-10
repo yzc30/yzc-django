@@ -256,8 +256,7 @@ def register_apply(request):
 @auth
 @require_http_methods(["POST"])
 def register_pass(request):
-    global register_user
-    global register_pwd
+    global register_user, register_pwd
     user = request.session.get('user')
     register_id = request.POST.get("id")
     register_list_models = models.RegisterList.objects
@@ -266,17 +265,17 @@ def register_pass(request):
     for i in register_list_models.filter(id=register_id):  # 取出注册的账号密码
         register_user = i.register_user
         register_pwd = i.register_pwd
-    for table in login_models.all():  # 遍历login数据库的table
-        if register_user == table.user:
-            msg = "用户名已存在"
-            return HttpResponse(json.dumps({"pass": 0, "msg": msg}))
-    login_models.create(
-        user=register_user,
-        pwd=register_pwd
-    )
-    register_list_models.filter(id=register_id).delete()
-    msg = "已通过" + register_user + "注册"
-    return HttpResponse(json.dumps({"pass": 1, "msg": msg}))
+    if login_models.filter(user=register_user).exists():
+        msg = "用户名已存在"
+        return HttpResponse(json.dumps({"pass": 0, "msg": msg}))
+    else:
+        login_models.create(
+            user=register_user,
+            pwd=register_pwd
+        )
+        register_list_models.filter(id=register_id).delete()
+        msg = "已通过" + register_user + "注册"
+        return HttpResponse(json.dumps({"pass": 1, "msg": msg}))
 
 
 @auth
