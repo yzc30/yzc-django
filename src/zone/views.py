@@ -45,21 +45,20 @@ def login(request):
 
 @require_http_methods(["POST"])
 def login_user(request):
-    print("login_user")
-    if request.method == 'POST':
-        # print(request.POST)
-        user = request.POST.get("user")
-        pwd = request.POST.get("pwd")
-        login_models = models.Login.objects
-        can_login = 0  # 默认不能登录
-        for table in login_models.all():  # 遍历数据库的table
-            if user == table.user:
-                if pwd == table.pwd:
-                    can_login = 1  # 用户密码一致
-                    request.session['user'] = user
-                    break
-        # print(request.session)
-        return HttpResponse(json.dumps({"can_login": can_login}))
+    user = request.POST.get("user")
+    pwd = request.POST.get("pwd")
+    login_models = models.Login.objects
+    if not login_models.filter(user=user).exists():  # 用户名是否存在
+        can_login = 0  # 不能登录
+    else:
+        # print(login_models.filter(user=user)[0].user)
+        if login_models.filter(user=user)[0].pwd != pwd:  # 密码是否一致
+            can_login = 0  # 不能登录
+        else:
+            can_login = 1  # 用户密码一致
+            request.session['user'] = user
+    # print(request.session)
+    return HttpResponse(json.dumps({"can_login": can_login}))
 
 
 @require_http_methods(["POST"])
